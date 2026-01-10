@@ -570,6 +570,14 @@ footer img {
     border: 1px solid var(--color-secondary);
 }
 
+.cartao {
+
+    display: flex;
+    flex-direction: row;
+
+    gap: 1rem;
+}
+
 /* =========================
    QUEM SOU
 ========================= */

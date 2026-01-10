@@ -123,3 +123,57 @@ linkACloseMenu.forEach(link_a => {
     })
 
 })
+
+async function requisicao_fichas() {
+
+    let requisicao = await fetch("https://raw.githubusercontent.com/john-sz/APIcoments/main/fichas.json");
+    let dados_json = await requisicao.json();
+
+    console.log(dados_json);
+    cartoes(dados_json);
+}
+
+requisicao_fichas();
+
+function cartoes(dados) {
+
+    let fichas = document.getElementById("fichas");
+    let cartao = document.createElement("span");
+
+    fichas.classList.add("cartao");
+
+    for (let i = 0; i < dados.length; i++) {
+
+        let nome = document.createElement("span");
+        let responsavel = document.createElement("span");
+        let idade = document.createElement("span");
+        let imagem = document.createElement("img");
+        let tratamento = document.createElement("span");
+        let capacete = document.createElement("span");
+        let observacoes = document.createElement("span");
+
+        let informacoes = document.createElement("span");
+
+        nome.textContent = dados[i].Bebe;
+        idade.textContent = dados[i].Idade;
+        responsavel.textContent = dados[i].Responsavel;
+        
+        tratamento.textContent = dados[i].Tratamento;
+        capacete.textContent = dados[i].Capacete;
+        observacoes.textContent = dados[i].Observacoes;
+
+        imagem.src = "https://raw.githubusercontent.com/john-sz/APIcoments/main/Gemini_Generated_Image_kqxg95kqxg95kqxg.png";
+        imagem.setAttribute("width", "200rem");
+
+        informacoes.appendChild(imagem);
+        informacoes.appendChild(nome);
+        informacoes.appendChild(idade);
+        informacoes.appendChild(responsavel);
+        informacoes.appendChild(tratamento);
+        informacoes.appendChild(capacete);
+        informacoes.appendChild(observacoes);
+
+        cartao.appendChild(informacoes);
+        fichas.appendChild(cartao);
+    }
+}
