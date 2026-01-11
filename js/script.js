@@ -124,6 +124,8 @@ linkACloseMenu.forEach(link_a => {
 
 })
 
+/*ALTERAÇÕES COM O JOHN*/
+
 async function requisicao_fichas() {
 
     let requisicao = await fetch("https://raw.githubusercontent.com/john-sz/APIcoments/main/fichas.json");
@@ -137,13 +139,12 @@ requisicao_fichas();
 
 function cartoes(dados) {
 
-    let fichas = document.getElementById("fichas");
-    let cartao = document.createElement("span");
-
-    fichas.classList.add("cartao");
+    let fichas = document.getElementById("fichas"); // é o container das fichas
+    fichas.classList.add("sec_cartao");
 
     for (let i = 0; i < dados.length; i++) {
 
+        //criação de variáveis p/ cada cartão ----------------
         let nome = document.createElement("span");
         let responsavel = document.createElement("span");
         let idade = document.createElement("span");
@@ -152,20 +153,32 @@ function cartoes(dados) {
         let capacete = document.createElement("span");
         let observacoes = document.createElement("span");
 
-        let informacoes = document.createElement("span");
+        let cartao = document.createElement("span"); // é o container do cartão (imagem + informações)
+        let informacoes = document.createElement("span"); // é o container das informações (textos)
 
+        // atribuição de variáveis ----------------
         nome.textContent = dados[i].Bebe;
-        idade.textContent = dados[i].Idade;
-        responsavel.textContent = dados[i].Responsavel;
+        idade.textContent = "Idade: " + dados[i].Idade;
+        responsavel.textContent = "Responsável: " + dados[i].Responsavel;
+        tratamento.textContent = "Tratamento realizado: " + dados[i].Tratamento;
+
+        if(dados[i].Capacete) {capacete.textContent = "Capacete: necessário"}
+        else {capacete.textContent = "Capacete: não necessário"}
         
-        tratamento.textContent = dados[i].Tratamento;
-        capacete.textContent = dados[i].Capacete;
-        observacoes.textContent = dados[i].Observacoes;
-
+        observacoes.textContent = "Observações: " +  dados[i].Observacoes;
+        
         imagem.src = "https://raw.githubusercontent.com/john-sz/APIcoments/main/Gemini_Generated_Image_kqxg95kqxg95kqxg.png";
-        imagem.setAttribute("width", "200rem");
 
-        informacoes.appendChild(imagem);
+        // atribuição de classes ----------------
+        cartao.classList.add("cartao");
+        informacoes.classList.add("info_cartao");
+        nome.classList.add("cartao_nome");
+        observacoes.classList.add("cartao_observacao");
+        imagem.classList.add("cartao_imagem");
+
+        // colocando os itens nos containters, a imagem vem primeiro ----------------
+        cartao.appendChild(imagem);
+        
         informacoes.appendChild(nome);
         informacoes.appendChild(idade);
         informacoes.appendChild(responsavel);
@@ -177,3 +190,5 @@ function cartoes(dados) {
         fichas.appendChild(cartao);
     }
 }
+
+/*ALTERAÇÕES COM O JOHN*/
