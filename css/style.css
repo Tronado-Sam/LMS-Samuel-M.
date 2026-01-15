@@ -572,18 +572,51 @@ footer img {
 
 /*ALTERAÇÕES COM O JOHN*/
 
-.sec_cartao {
+.subtopico {
+
+    font-family: 'diphylleia';
+    font-size: 2rem;
+
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+
+    justify-content: left;
+
+    color: var(--color-secondary);
+}
+
+.carrossel {
 
     margin-bottom: 5rem;
-    margin-left: 12.5rem;
-
-    font-size: 0.9rem;
-    font-size: 0.9rem;
-    width: 73.3%;
 
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    align-items: center;
+    gap: 1rem;
+}
+
+#voltar i {
+
+    transform: rotate(90deg);
+}
+
+#avancar i {
+ 
+    transform: rotate(-90deg);
+}
+
+.janela {
+    width: 69.5rem;
+    overflow: hidden;
+}
+
+.sec_cartao {
+
+    font-size: 0.9rem;
+    font-size: 0.9rem;
+    width: 100%;
+
+    display: flex;
+    transition: transform 0.4s ease;
 }
 
 .cartao {
@@ -592,6 +625,10 @@ footer img {
     border: 1px solid #FF5C9C;
     border-radius: 2rem;
     padding: 1.2rem;
+
+    width: 69.5rem;
+
+    flex-shrink: 0;
 
     display: flex;
     gap: 1rem;

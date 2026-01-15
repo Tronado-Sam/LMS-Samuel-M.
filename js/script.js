@@ -137,10 +137,9 @@ async function requisicao_fichas() {
 
 requisicao_fichas();
 
-function cartoes(dados) {
+let fichas = document.getElementById("fichas"); // é o container das fichas
 
-    let fichas = document.getElementById("fichas"); // é o container das fichas
-    fichas.classList.add("sec_cartao");
+function cartoes(dados) {
 
     for (let i = 0; i < dados.length; i++) {
 
@@ -167,7 +166,7 @@ function cartoes(dados) {
         
         observacoes.textContent = "Observações: " +  dados[i].Observacoes;
         
-        imagem.src = "https://raw.githubusercontent.com/john-sz/APIcoments/main/Gemini_Generated_Image_kqxg95kqxg95kqxg.png";
+        imagem.src = dados[i].Foto;
 
         // atribuição de classes ----------------
         cartao.classList.add("cartao");
@@ -190,5 +189,32 @@ function cartoes(dados) {
         fichas.appendChild(cartao);
     }
 }
+
+/*DESLOCAMENTO DO CARROSSEL*/
+let indice = 0
+
+let avancar = document.getElementById("avancar");
+let voltar = document.getElementById("voltar");
+
+function alterarPosicao() {
+
+    fichas.style.transform = `translateX(${-69.5 * indice}rem)`;
+    console.log(indice);
+}
+
+avancar.addEventListener("click", () => {
+
+    indice += 1;
+    alterarPosicao();
+})
+
+voltar.addEventListener("click", () => {
+
+    if(indice > 0) {
+
+        indice -= 1;
+        alterarPosicao();
+    }
+})
 
 /*ALTERAÇÕES COM O JOHN*/
