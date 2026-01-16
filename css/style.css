@@ -596,12 +596,40 @@ footer img {
 
 #voltar i {
 
-    transform: rotate(90deg);
+    background: transparent;
+    font-size: 2rem;
+    padding: 0.3rem;
+    padding-right: 0.4rem;
+
+    color: var(--color-blue-primary);
+    transition: background 0.5s;
+
+    border-radius: 0.5rem;
+}
+
+#voltar i:hover {
+
+    background: var(--color-blue-light);
+    border-radius: 0.5rem;
 }
 
 #avancar i {
  
-    transform: rotate(-90deg);
+    background: transparent;
+    font-size: 2rem;
+    padding: 0.3rem;
+    padding-left: 0.4rem;
+
+    color: var(--color-blue-primary);
+    transition: background 0.5s;
+
+    border-radius: 0.5rem;
+}
+
+#avancar i:hover {
+
+    background: var(--color-blue-light);
+    border-radius: 0.5rem;
 }
 
 .janela {
@@ -661,8 +689,10 @@ footer img {
 
 .cartao_imagem {
 
-    width: 11rem;
+    width: 13rem;
+    height: 12rem;
     border-radius: 1rem;
+
 }
 
 /*ALTERAÇÕES COM O JOHN*/

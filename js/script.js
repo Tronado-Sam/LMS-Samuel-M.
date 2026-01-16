@@ -188,6 +188,10 @@ function cartoes(dados) {
         cartao.appendChild(informacoes);
         fichas.appendChild(cartao);
     }
+
+    let cards = fichas.children;
+    const clone = cards[0].cloneNode(true); // clonar o primeiro item para fazer loop infinito
+    fichas.appendChild(clone);
 }
 
 /*DESLOCAMENTO DO CARROSSEL*/
@@ -205,16 +209,38 @@ function alterarPosicao() {
 avancar.addEventListener("click", () => {
 
     indice += 1;
+    fichas.style.transition = "transform 0.400s ease";
     alterarPosicao();
+
+    if(indice === 20) {
+
+        setTimeout(() => {
+            
+            fichas.style.transition = "none";
+            indice = 0;
+            alterarPosicao();
+
+        }, 400);        
+    }
 })
 
 voltar.addEventListener("click", () => {
 
-    if(indice > 0) {
 
-        indice -= 1;
+    if(indice === 0) {
+
+        fichas.style.transition = "none";
+        indice = 20;
         alterarPosicao();
     }
+
+    setTimeout(() => {
+        
+        indice -= 1;
+        fichas.style.transition = "transform 0.4s ease";
+        alterarPosicao();
+
+    }, 10);
 })
 
 /*ALTERAÇÕES COM O JOHN*/
